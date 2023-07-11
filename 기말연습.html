@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0px;
+            display: grid;
+            width: 100%;
+            height: 100%;
+            font-family: 'Libre Baskerville', serif;
+            grid-template-areas:
+                "header header header"
+                "nav nav nav"
+                "section section section"
+                "article article article"
+                "footer footer footer"
+            ;
+            grid-template-rows: 80px 700px 1000px 1000px 1000px;
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        header {
+            grid-area: header;
+            text-align: center;
+            grid-gap: 1rem;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+        }
+
+        nav {
+            grid-area: nav;
+            margin: 0px;
+            text-decoration: none;
+            float: left;
+
+        }
+
+        section {
+            grid-area: section;
+        }
+
+        article {
+            grid-area: article;
+        }
+
+        footer {
+            grid-area: footer;
+
+        }
+
+        .logo {
+            width: 150px;
+        }
+
+        .search {
+            margin-top: 30px;
+            margin-left: 200px;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        .hd1 {
+            width: 25%;
+            height: 100%;
+            margin: 0px;
+            float: left;
+        }
+
+        .hd2 {
+            width: 25%;
+            height: 100%;
+            margin: 0px;
+            float: left;
+        }
+
+        .hd3 {
+            width: 50%;
+            height: 100%;
+            display: inline-block;
+            margin: 0px;
+        }
+
+        .box1 {
+            width: 33%;
+            height: 100%;
+            margin: 0px;
+            float: left;
+        }
+
+        .box2 {
+            width: 34%;
+            height: 100%;
+            margin: 0px;
+            float: left;
+        }
+
+        .box3 {
+            width: 33%;
+            height: 100%;
+
+            display: inline-block;
+            margin: 0px;
+        }
+
+        .box4 {
+            margin: 0px;
+            width: 100%;
+            height: 100%;
+        }
+
+        .box5 {
+            margin: 0px;
+            width: 100%;
+            height: 50%;
+        }
+
+        .box6 {
+            margin: 0px;
+            width: 100%;
+            height: 50%;
+        }
+
+        .outer {
+            width: 100%;
+            height: 100%;
+            margin: 0px;
+        }
+
+        .outer1 {
+            width: 80%;
+            height: 80%;
+            margin-left: 20px;
+            margin-top: 20px;
+        }
+
+        .slides {
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .slides * {
+            user-select: none;
+            -ms-user-select: none;
+            -moz-user-select: none;
+            -khtml-user-select: none;
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        .slides input {
+            display: none;
+        }
+
+        .slide-container {
+            display: block;
+        }
+
+        .slide {
+            top: 0;
+            opacity: 0;
+            width: 100%;
+            height: 90%;
+            display: block;
+            position: absolute;
+
+            transform: scale(0);
+
+            transition: all .7s ease-in-out;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .nav label {
+            width: 100px;
+            height: 100%;
+            display: none;
+            position: absolute;
+
+            opacity: 0;
+            z-index: 9;
+            cursor: pointer;
+
+            transition: opacity .2s;
+
+            color: #FFF;
+            font-size: 156pt;
+            text-align: center;
+            line-height: 380px;
+            font-family: "Varela Round", sans-serif;
+            background-color: rgba(255, 255, 255, .3);
+            text-shadow: 0px 0px 15px rgb(119, 119, 119);
+        }
+
+        .slide:hover+.nav label {
+            opacity: 0.5;
+        }
+
+        .nav label:hover {
+            opacity: 1;
+        }
+
+        .nav .next {
+            right: 0;
+        }
+
+        input:checked+.slide-container .slide {
+            opacity: 1;
+
+            transform: scale(1);
+
+            transition: opacity 1s ease-in-out;
+        }
+
+        input:checked+.slide-container .nav label {
+            display: block;
+        }
+
+        .nav-dots {
+            width: 100%;
+            bottom: 9px;
+            height: 11px;
+            display: block;
+            position: absolute;
+            text-align: center;
+        }
+
+        .nav-dots .nav-dot {
+            top: -5px;
+            width: 11px;
+            height: 11px;
+            margin: 0 4px;
+            position: relative;
+            border-radius: 100%;
+            display: inline-block;
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-dots .nav-dot:hover {
+            cursor: pointer;
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        input#img-1:checked~.nav-dots label#img-dot-1,
+        input#img-2:checked~.nav-dots label#img-dot-2,
+        input#img-3:checked~.nav-dots label#img-dot-3,
+        input#img-4:checked~.nav-dots label#img-dot-4,
+        input#img-5:checked~.nav-dots label#img-dot-5,
+        input#img-6:checked~.nav-dots label#img-dot-6,
+        input#img-7:checked~.nav-dots label#img-dot-7,
+        input#img-8:checked~.nav-dots label#img-dot-8 {
+            background: rgba(0, 0, 0, 0.8);
+        }
+
+        @import url(https://fonts.googleapis.com/css?family=Raleway:400,500,800);
+
+        .snip1250 {
+            font-family: 'Raleway', Arial, sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .snip1250 * {
+            box-sizing: border-box;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+
+        .snip1250 li {
+            display: inline-block;
+            list-style: outside none none;
+            margin: 0 2.2em;
+            overflow: hidden;
+        }
+
+        .snip1250 a {
+            padding: 0 0.2em 0 0.5em;
+            color: black;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        .snip1250 a:before,
+        .snip1250 a:after {
+            position: absolute;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+
+        .snip1250 a:before {
+            left: 100%;
+            display: block;
+            width: 3px;
+            height: 100%;
+            content: "";
+            background-color: #f39c12;
+        }
+
+        .snip1250 a:after {
+            padding: 0 0.2em 0 0.5em;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            content: attr(data-hover);
+            color: #f39c12;
+            white-space: nowrap;
+        }
+
+        .snip1250 li:hover a,
+        .snip1250 .current a {
+            transform: translateX(-100%);
+        }
+
+        a {
+            text-decoration: none;
+            color: black;
+        }
+
+        a:hover {
+            color: #f39c12;
+        }
+
+  
+
+    </style>
+
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Oswald&family=Playfair+Display&display=swap" rel="stylesheet">
+   
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+
+        <div class="hd1">
+
+        </div>
+
+        <div class="hd2">
+
+
+        </div>
+        <div class="hd3">
+            <ul class="snip1250">
+                <li><a href="login.html" target=_parent data-hover="LOGIN">LOGIN</a></li>
+                <li><a href="join.html" target=_parent data-hover="JOIN">JOIN</a></li>
+            </ul>
+        </div>
+
+    </header>
+
+    <nav>
+        <ul class="slides">
+            <input type="radio" name="radio-btn" id="img-1" checked />
+            <li class="slide-container">
+                <div class="slide"><img src="슬라이드2.png" />
+                </div>
+                <div class="nav">
+                    <label for="img-3" class="prev">&#x2039;</label>
+                    <label for="img-2" class="next">&#x203a;</label>
+                </div>
+            </li>
+            <input type="radio" name="radio-btn" id="img-2" />
+            <li class="slide-container">
+                <div class="slide"><img src="슬라이드3.png" />
+                </div>
+                <div class="nav">
+                    <label for="img-1" class="prev">&#x2039;</label>
+                    <label for="img-3" class="next">&#x203a;</label>
+                </div>
+            </li>
+            <input type="radio" name="radio-btn" id="img-3" />
+            <li class="slide-container">
+                <div class="slide"><img src="슬라이드1.png" />
+                </div>
+                <div class="nav">
+                    <label for="img-2" class="prev">&#x2039;</label>
+                    <label for="img-1" class="next">&#x203a;</label>
+                </div>
+            </li>
+
+
+            <li class="nav-dots">
+                <label for="img-1" class="nav-dot" id="img-dot-1"></label>
+                <label for="img-2" class="nav-dot" id="img-dot-2"></label>
+                <label for="img-3" class="nav-dot" id="img-dot-3"></label>
+
+            </li>
+        </ul>
+
+    </nav>
+
+    <section>
+
+        <div class="box1">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/coats-jackets/padded/product.down-filled-short-puffer-jacket-black.0791633001.html?slitmCd=40A1204138">
+                            <img src="패딩.jpg" class="outer1" onmouseover=" this.src ='패딩2.jpg' "
+                                onmouseout="this.src='패딩.jpg'"><br> &nbsp;&nbsp;&nbsp; Down Filled Short Puffer
+                            Jacket<br> &nbsp;&nbsp;&nbsp;335,000 </a></div>
+                </div>
+                <div class="box6">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/leisurewear/product.brushed-organic-cotton-relaxed-sweatshirt-blue.0908879002.html?slitmCd=40A1220099">
+                            <img src="맨투맨.jpg" class="outer1" onmouseover=" this.src ='맨투맨2.jpg' "
+                                onmouseout="this.src='맨투맨.jpg'"><br> &nbsp;&nbsp;&nbsp; Organic Cotton Relaxed
+                            Sweatshirts <br> &nbsp;&nbsp;&nbsp; 99,000 </a></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="box2">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/coats-jackets/product.slim-fit-wool-blazer-navy.0850706001.html?slitmCd=40A1185924">
+                            <img src="블레이저.jpg" class="outer1" onmouseover=" this.src ='블레이저2.jpg' "
+                                onmouseout="this.src='블레이저.jpg'"><br> &nbsp;&nbsp;&nbsp; Slim Fit Wool Blazer Navy<br>
+                            &nbsp;&nbsp;&nbsp;290,000 </a></div>
+                </div>
+                <div class="box6">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/knitwear/merino-knitwear/product.brushed-wool-crewneck-jumper-blue.0927488003.html?slitmCd=40A1229463">
+                            <img src="니트.jpg" class="outer1" onmouseover=" this.src ='니트2.jpg' "
+                                onmouseout="this.src='니트.jpg'"> <br> &nbsp;&nbsp;&nbsp; brushed wool cruneck sweater
+                            <br> &nbsp;&nbsp;&nbsp; 135,000</a></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="box3">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/coats-jackets/coats/product.textured-wool-oversized-coat-beige.0959812001.html?slitmCd=40A1212684">
+                            <img src="코트.jpg" class="outer1" onmouseover=" this.src ='코트2.jpg' "
+                                onmouseout="this.src='코트.jpg'"><br> &nbsp;&nbsp;&nbsp; Textured Wool Oversized Coat
+                            Beige<br> &nbsp;&nbsp;&nbsp;450,000 </a></div>
+                </div>
+                <div class="box6">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/sweatshirts/sweatshirts/product.organic-cotton-structured-hoodie-begie.0908883002.html?slitmCd=40A1195133">
+                            <img src="후드티.jpg" class="outer1" onmouseover=" this.src ='후드티2.jpg' "
+                                onmouseout="this.src='후드티.jpg'"> <br> &nbsp;&nbsp;&nbsp; Structured-hoodie-begie <br>
+                            &nbsp;&nbsp;&nbsp; 115,000</a></div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+    <article>
+        <div class="box1">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/most-popular/product.organic-cotton-corduroy-trousers-black.0964934002.html?slitmCd=40A1243848">
+                            <img src="블랙.jpg" class="outer1" onmouseover=" this.src ='블랙진2.jpg' "
+                                onmouseout="this.src='블랙.jpg'"> <br> &nbsp;&nbsp;&nbsp; Corduroy-trousers-black <br>
+                            &nbsp;&nbsp;&nbsp; 150,000</a></div>
+                </div>
+                <div class="box6">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/the-edit/product.chunky-leather-chelsea-boots-black.0891353001.html?slitmCd=40A1192522">
+                            <img src="첼시부츠.jpg" class="outer1" onmouseover=" this.src ='첼시부츠2.jpg' "
+                                onmouseout="this.src='첼시부츠.jpg'"><br> &nbsp;&nbsp;&nbsp; Chelsea-boots-black <br>
+                            &nbsp;&nbsp;&nbsp; 290,000 </a></div>
+                </div>
+            </div>
+
+        </div>
+        <div class="box2">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/the-edit/product.wool-crepe-tapered-leg-chino-trousers-navy.0902580001.html?slitmCd=40A1221505">
+                            <img src="슬렉스.jpg" class="outer1" onmouseover=" this.src ='슬렉스2.jpg' "
+                                onmouseout="this.src='슬렉스.jpg'"><br> &nbsp;&nbsp;&nbsp; Chino-trousers-navy <br>
+                            &nbsp;&nbsp;&nbsp; 150,000 </a></div>
+                </div>
+                <div class="box6">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/most-popular/product.leather-lace-up-chunky-derby-shoes-black,-grey.0950275001.html?slitmCd=40A1221522">
+                            <img src="더비슈즈.jpg" class="outer1" onmouseover=" this.src ='더비슈즈2.jpg' "
+                                onmouseout="this.src='더비슈즈.jpg'"><br> &nbsp;&nbsp;&nbsp; Derby-shoes-black <br>
+                            &nbsp;&nbsp;&nbsp; 250,000 </a></div>
+                </div>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/trousers/straight-trousers/product.straight-leg-recycled-cotton-jeans-blue.0901097001.html?slitmCd=40A1126515">
+                            <img src="청바지.jpg" class="outer1" onmouseover=" this.src ='청바지2.jpg' "
+                                onmouseout="this.src='청바지.jpg'"><br> &nbsp;&nbsp;&nbsp; Jeans-blue <br>
+                            &nbsp;&nbsp;&nbsp; 115,000 </a></div>
+                </div>
+                <div class="box6">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/new-accessories/product.oversized-sole-canvas-sneakers-white.0849499001.html?slitmCd=40A1107172">
+                            <img src="단화.jpg" class="outer1" onmouseover=" this.src ='단화2.jpg' "
+                                onmouseout="this.src='단화.jpg'"><br> &nbsp;&nbsp;&nbsp; Canvas-sneakers-white <br>
+                            &nbsp;&nbsp;&nbsp; 105,000 </a></div>
+                </div>
+            </div>
+
+        </div>
+
+    </article>
+
+    <footer>
+
+        <div class="box1">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer">
+                        <a
+                            href="https://www.cosstores.com/kr_krw/men/bags-wallets/product.packable-recycled-polyester-tote-bag-black.0955648001.html?slitmCd=40A1248356">
+                            <img src="큰가방.jpg" class="outer1" onmouseover=" this.src ='큰가방2.jpg' "
+                                onmouseout="this.src='큰가방.jpg'"><br> &nbsp;&nbsp;&nbsp; tote-bag-black <br>
+                            &nbsp;&nbsp;&nbsp; 99,000 </a></div>
+                </div>
+                <div class="box6">
+                
+                    <figcaption>
+                        <h3>1789005 Juni</h3>
+                        <h4>Web Designer</h4>
+                        <p>SNS: <a href="https://www.instagram.com/ju_ni.5/" target="_blank">instagram</p></a>
+                        <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
+                            <a href="#"> <i class="ion-social-twitter"></i></a>
+                            <a href="#"> <i class="ion-social-vimeo"></i></a>
+                        </div>
+                    </figcaption>
+
+                </div>
+            </div>
+
+        </div>
+        <div class="box2">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/belts/product.leather-belt-with-matte-buckle-black.0729448001.html?slitmCd=40A0824142">
+                            <img src="허리띠.jpg" class="outer1" onmouseover=" this.src ='허리띠2.jpg' "
+                                onmouseout="this.src='허리띠.jpg'"><br> &nbsp;&nbsp;&nbsp; Matte-buckle-black <br>
+                            &nbsp;&nbsp;&nbsp; 115,000 </a></div>
+                </div>
+                <div class="box6">
+                
+                    <figcaption>
+                        <h3>1789012 John</h3>
+                       <h4>fashion designer</h4>
+                        <p>SNS: <a href="https://www.instagram.com/ootd_js_/" target="_blank">instagram</p></a>
+                        <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
+                            <a href="#"> <i class="ion-social-twitter"></i></a>
+                            <a href="#"> <i class="ion-social-vimeo"></i></a>
+                        </div>
+                    </figcaption>
+
+                </div>
+            </div>
+        </div>
+        <div class="box3">
+            <div class="box4">
+                <div class="box5">
+                    <div class="outer"> <a
+                            href="https://www.cosstores.com/kr_krw/men/bags-wallets/product.leather-crossbody-pouch-black.0810310001.html?slitmCd=40A1035706">
+                            <img src="작은가방.jpg" class="outer1" onmouseover=" this.src ='작은가방2.jpg' "
+                                onmouseout="this.src='작은가방.jpg'"><br> &nbsp;&nbsp;&nbsp; Pouch-black <br>
+                            &nbsp;&nbsp;&nbsp; 89,000 </a></div>
+                </div>
+                <div class="box6">
+
+                </div>
+            </div>
+
+        </div>
+
+    </footer>
+
+    <script>
+     
+    </script>
+</body>
+
+</html>

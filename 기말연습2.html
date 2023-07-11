@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0px;
+            display: grid;
+            width: 100%;
+            height: 100%;
+            font-family: 'Libre Baskerville', serif;
+            grid-template-areas:
+                "section  article"
+            ;
+
+            grid-template-rows: 1fr;
+            grid-template-columns: 300px 1fr;
+        }
+
+        section {
+            grid-area: section;
+            background-color: rgb(255, 255, 255);
+          justify-items: center;
+        }
+
+        article {
+            grid-area: article;
+
+        }
+
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
+        .text {
+
+            color:black
+        }
+
+        a {
+          
+            text-decoration: none;
+            color:black ;
+        }
+
+
+        .logo {
+            width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .atest{
+          border-bottom: 3px solid #b0830a;
+        }
+        .logo1 {
+            width: 100%;
+        }
+
+        .top {
+            margin-top: 100px;
+        }
+ 
+        table{margin-top: 40px; margin-left: auto;
+            margin-right: auto;}
+            .button{ background-color: #b0830a;} 
+            .button:hover{background-color: #feee60 ;
+            }
+            .id{color: #feee60; background-color: #b0830a;}
+            .id:hover{background-color: rgb(170, 169, 169);
+            }
+            .password{color: #feee60; background-color: #b0830a;}
+            .password:hover{background-color: rgb(170, 169, 169);
+            }
+
+
+li:hover{font-size: 1.2rem;}
+
+@import url(https://fonts.googleapis.com/css?family=Raleway:500);
+.snip1310 {
+ font-family: 'Libre Baskerville', serif;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.snip1310 * {
+  box-sizing: border-box;
+  -webkit-transition: all 0.35s linear;
+  transition: all 0.35s linear;
+}
+.snip1310 li {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0.5em 3em 0rem 0rem;
+  overflow: hidden;
+}
+.snip1310 a {
+  padding: 0.3em 0.8em;
+  backface-visibility: hidden;
+  color: #bfbfbf;
+  display: block;
+  line-height: 2em;
+  padding: 0 1em;
+  position: relative;
+  text-decoration: none;
+}
+.snip1310 a:after {
+  -webkit-transition: all 0.35s linear;
+  transition: all 0.35s linear;
+  color: #c0392b;
+  content: attr(data-hover);
+  top: 0;
+  line-height: 2em;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  -webkit-transform: rotateY(0deg);
+  transform: rotateY(0deg);
+}
+.snip1310 li:hover a,
+.snip1310 li.current a {
+  -webkit-transform: rotateY(360deg);
+  transform: rotateY(360deg);
+  color: transparent;
+}
+.snip1310 li:hover a:after,
+.snip1310 li.current a:after {
+  opacity: 1;
+}
+            
+    </style>
+
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Oswald&family=Playfair+Display&display=swap" rel="stylesheet">
+   
+<title>초기화면</title>
+</head>
+
+<body>
+    <section>
+        <div class="text">
+            <div class="logo1"> <a href="기말연습2.html" class="logo_under"><img src="logo2.png" class="logo"></a></div>
+        
+            <div class="top">
+                <ul class="snip1310">
+	            <li><a href="in.html" target="main" data-hover="INTRODUCE"class="atest">INTRODUCE</a></li><br><br>
+		    <li><a href="outer.html" target="main" data-hover="OUTER"class="atest">OUTER</a></li><br>
+                    <li><a href="top.html" target="main" data-hover="TOP" class="atest">TOP</a></li><br>
+                    <li><a href="pants.html" target="main" data-hover="PANTS" class="atest">PANTS</a></li><br>
+                    <li><a href="shoes.html" target="main" data-hover="SHOES" class="atest">SHOES</a></li><br>
+                    <li><a href="acc.html" target="main" data-hover="ACC" class="atest">ACC</a></li>
+                </ul>
+               
+                <ul class="snip1310">
+                    <li><a href="공지사항.html" target="main" data-hover="NOTICE" class="atest">NOTICE</a></li><br>
+                    <li><a href="qa.html" target="main" data-hover="Q & A" class="atest">Q & A</a></li><br>
+                    <li><a href="rw.html" target="main" data-hover="REVIEW" class="atest">REVIEW</a></li>
+                </ul>
+            </div>
+    
+    </section>
+
+    <article>
+        <iframe src="기말연습.html" frameborder="0" name="main"></iframe>
+
+    </article>
+
+
+
+<script>
+    $(".hover").mouseleave(
+  function () {
+    $(this).removeClass("hover");
+  }
+);
+</script>
+</body>
+
+</html>

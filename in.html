@@ -1,0 +1,253 @@
+<html>
+
+<head>
+    <style>
+        html,
+        body {
+            height: 100%;
+        }
+
+        body {
+            margin: 0px;
+            display: grid;
+            width: 100%;
+            height: 100%;
+            font-family: 'Libre Baskerville', serif;
+            grid-template-areas:
+                "header header"
+                "article article"
+                "footer footer"
+            ;
+            grid-template-rows: 100px 400px 400px;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        header {
+            grid-area: header;
+            text-align: center;
+            grid-gap: 1rem;
+            width: 100%;
+            height: 100%;
+            text-align: left;
+        }
+
+
+        article {
+            grid-area: article;
+        }
+
+        footer {
+            grid-area: footer;
+            
+          
+        }
+
+
+
+        .hd1 {
+            width: 70%;
+            height: 100%;
+            margin: 0px;
+            float: left;
+        }
+
+        .hd2 {
+            width: 30%;
+            height: 100%;
+            margin-top: 50px;
+            color: black;
+            float: left;
+            text-align: center;
+        }
+
+
+
+
+        .box1 {
+            width: 40%;
+            height: 100%;
+            margin-left: 150px;
+            float: left;
+        }
+
+        .box2 {
+            width: 40%;
+            height: 100%;
+            margin: 0px;
+            float: left;
+        }
+        .box3{
+            margin-top:150px;
+            margin-left: 150px;
+            height: 100%;
+        }
+
+
+
+        .snip1250 {
+            font-family: 'Raleway', Arial, sans-serif;
+            text-align: center;
+            text-transform: uppercase;
+            font-weight: 500;
+        }
+
+        .snip1250 * {
+            box-sizing: border-box;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+
+        .snip1250 li {
+            display: inline-block;
+            list-style: outside none none;
+            margin: 0 2.2em;
+            overflow: hidden;
+        }
+
+
+        .snip1250 a {
+            padding: 0 0.2em 0 0.5em;
+            color: black;
+            position: relative;
+            display: inline-block;
+            letter-spacing: 1px;
+            margin: 0;
+            text-decoration: none;
+        }
+
+        .snip1250 a:before,
+        .snip1250 a:after {
+            position: absolute;
+            -webkit-transition: all 0.35s ease;
+            transition: all 0.35s ease;
+        }
+
+        .snip1250 a:before {
+            left: 100%;
+            display: block;
+            width: 3px;
+            height: 100%;
+            content: "";
+            background-color: #f39c12;
+        }
+
+        .snip1250 a:after {
+            padding: 0 0.2em 0 0.5em;
+            position: absolute;
+            left: 100%;
+            top: 0;
+            content: attr(data-hover);
+            color: #f39c12;
+            white-space: nowrap;
+        }
+
+        .snip1250 li:hover a,
+        .snip1250 .current a {
+            transform: translateX(-100%);
+        }
+    </style>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@700&family=Oswald&family=Playfair+Display&display=swap"
+        rel="stylesheet">
+
+
+
+</head>
+
+<body>
+    <header>
+
+        <div class="hd1">
+
+        </div>
+
+        <div class="hd2">
+            <ul class="snip1250">
+                <li><a href="login.html" target=_self data-hover="LOGIN">LOGIN</a></li>
+                <li><a href="join.html" target=_self data-hover="JOIN">JOIN</a></li>
+            </ul>
+
+
+        </div>
+
+
+        </div>
+    </header>
+    <article>
+
+        <div class="box1">
+
+            </figure>
+            <figure class="snip1515">
+                <div class="profile-image"><img src="권예준.png"
+                        alt="sample83" /></div>
+                <figcaption>
+                    <h3>1789005 Juni</h3>
+                    <h4>Web Designer</h4>
+                    <p>Seconds grade in Information and Communication Engineering, Baejae University</p>
+                    <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
+                        <a href="#"> <i class="ion-social-twitter"></i></a>
+                        <a href="#"> <i class="ion-social-vimeo"></i></a>
+                    </div>
+                </figcaption>
+            </figure>
+
+        </div>
+
+
+        <div class="box2">
+
+            <figure class="snip1515">
+                <div class="profile-image"><img src="김지섭.png"
+                        alt="sample47" /></div>
+                <figcaption>
+                    <h3>1789012 John</h3>
+                    <h4>fashion designer</h4>
+                    <p>Seconds grade in Information and Communication Engineering, Baejae University</p>
+                    <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
+                        <a href="#"> <i class="ion-social-twitter"></i></a>
+                        <a href="#"> <i class="ion-social-vimeo"></i></a>
+                    </div>
+                </figcaption>
+
+
+
+        </div>
+    
+
+    </article>
+
+
+<footer>
+
+    <div class="box3">
+
+ <figure class="snip1515">
+                <div class="profile-image"><a href="기말연습2.html" target="_blank"><img src="로고.png"/></a></div>
+
+
+                    
+                <figcaption>
+                    <h3>Keen pin</h3>
+                    <p>I wanted to create a site where I could collect and show all the clothes at once.</p>
+                    <div class="icons"><a href="#"><i class="ion-social-reddit"></i></a>
+                        <a href="#"> <i class="ion-social-twitter"></i></a>
+                        <a href="#"> <i class="ion-social-vimeo"></i></a>
+                    </div>
+                </figcaption>
+
+    </div>
+
+
+</footer>
+
+
+
+    <script>
+
+
+    </script>
+</body>
+
+</html>
